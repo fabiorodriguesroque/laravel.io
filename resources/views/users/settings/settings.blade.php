@@ -47,6 +47,7 @@
                     @include('users.settings.password')
                     @include('users.settings.api_tokens')
                     @include('users.settings.notification_settings')
+                    @include('users.settings.github_account')
                     @include('users.settings.blocked')
                     @include('users.settings.remove')
                 </div>

@@ -45,6 +45,25 @@ class GitHubController extends Controller
         return $this->userFound($user, $socialiteUser);
     }
 
+    public function connect()
+    {        
+        $this->dispatchSync(new UpdateProfile(Auth::user(), ['github_username' => 'fabiorodriguesroque']));
+
+        $this->success('settings.notifications.updated');
+
+        return redirect()->route('settings.profile'); 
+    }
+
+    public function disconnect()
+    {
+        dd(Socialite::driver('github')->user());
+        $this->dispatchSync(new UpdateProfile(Auth::user(), ['github_username' => null]));
+
+        $this->success('settings.notifications.updated');
+
+        return redirect()->route('settings.profile'); 
+    }
+
     private function getSocialiteUser(): SocialiteUser
     {
         return Socialite::driver('github')->user();

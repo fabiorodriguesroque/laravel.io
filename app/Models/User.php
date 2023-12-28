@@ -257,6 +257,11 @@ final class User extends Authenticatable implements MustVerifyEmail
         return self::where('github_id', $githubId)->firstOrFail();
     }
 
+    public function hasGithubAccount(): bool
+    {
+        return ! empty($this->githubUsername());
+    }
+
     public function delete()
     {
         $this->deleteThreads();

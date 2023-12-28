@@ -84,6 +84,8 @@ Route::put('settings/users/{username}/unblock', UnblockUserSettingsController::c
 Route::post('settings/api-tokens', [ApiTokenController::class, 'store'])->name('settings.api-tokens.store');
 Route::delete('settings/api-tokens', [ApiTokenController::class, 'destroy'])->name('settings.api-tokens.delete');
 Route::post('settings/notifications', [NotificationSettingsController::class, 'store'])->name('settings.notifications.store');
+Route::post('settings/github/connect', [GitHubController::class, 'connect'])->name('settings.github.connect');
+Route::post('settings/github/disconnect', [GitHubController::class, 'disconnect'])->name('settings.github.disconnect');
 
 // Forum
 Route::prefix('forum')->group(function () {
